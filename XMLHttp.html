@@ -2,17 +2,19 @@
     <title>XMLHttp</title>
     <body>
         <script>
-            var xhr = new XMLHttpRequest()
+          var request = new XMLHttpRequest();
 
-            xhr.open("GET","https://restcountries.com/v3.1/currency/cop",true)
-            xhr.onload = function (){
-                if(xhr.status>= 200 && xhr.status <300){
-                    var resonse=JSON.parse(xhr.responseText)
-                
-                }else {
-                    console.log("Error")
-                }
-            }
+request.open("GET","https://restcountries.com/v2/all");
+
+request.send();
+
+request.onload=function(){
+    var result=JSON.parse(request.response);
+    for(let i = 0 ; i< result.length ; i++){
+        console.log(result[i].flags);   
+
+}
+}
             xhr.send()
         </script>
     </body>
